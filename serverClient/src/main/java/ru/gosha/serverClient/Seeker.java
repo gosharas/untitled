@@ -13,7 +13,7 @@ public class Seeker implements Serializable {
     /**
      * Имя искателя.
      */
-    public final String NameOfSeeker;
+    public final String nameOfSeeker;
     /**
      * Тип искателя. Преподаватель или студент группы?
      */
@@ -33,7 +33,7 @@ public class Seeker implements Serializable {
     /**
      * Адрес кампуса по-умолчанию.
      */
-    public final String DefaultAddress;
+    public final String defaultAddress;
 
     //public List<Couple> Couples = new LinkedList<>(); Нельзя здесь зависимость от Couple.
 
@@ -47,11 +47,29 @@ public class Seeker implements Serializable {
      * @param defaultAddress Какой адрес корпуса по-умолчанию?
      */
     public Seeker(String nameOfSeeker, SeekerType seekerType, LocalDate dateStart, LocalDate dateFinish, int timezone, String defaultAddress) {
-        NameOfSeeker = nameOfSeeker;
+        this.nameOfSeeker = nameOfSeeker;
         this.seekerType = seekerType;
         this.dateStart = dateStart;
         this.dateFinish = dateFinish;
         this.timezone = timezone;
-        DefaultAddress = defaultAddress;
+        this.defaultAddress = defaultAddress;
+    }
+
+    @Override
+    public boolean equals(Object ex) {
+        if (this == ex) {
+            return true;
+        }
+        if(ex instanceof Seeker) {
+            Seeker e = (Seeker) ex;
+            return
+                    nameOfSeeker.equals(e.nameOfSeeker) &&
+                            seekerType.equals(e.seekerType) &&
+                            dateStart.equals(e.dateStart) &&
+                            dateFinish.equals(e.dateFinish) &&
+                            timezone == e.timezone &&
+                            defaultAddress.equals(e.defaultAddress);
+        }
+        return false;
     }
 }

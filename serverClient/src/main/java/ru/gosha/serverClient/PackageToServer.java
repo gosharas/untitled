@@ -52,14 +52,14 @@ public class PackageToServer implements Serializable {
     /**
      * Преобразует входящий массив байтов в текущее хранилище.
      * @param input Массив байтов, который необходимо перевести в текущий класс.
-     * @return Представление хранилища в классе PackageToClient. Если ошибка, то null.
+     * @return Представление хранилища в классе PackageToServer. Если ошибка, то null.
      * @throws ClassNotFoundException Данные не истинные.
      */
-    public static PackageToClient fromByteArray(byte[] input) throws ClassNotFoundException {
+    public static PackageToServer fromByteArray(byte[] input) throws ClassNotFoundException {
         try {
             ByteArrayInputStream in = new ByteArrayInputStream(input);
             ObjectInputStream inObj = new ObjectInputStream(in);
-            PackageToClient out = (PackageToClient) inObj.readObject();
+            PackageToServer out = (PackageToServer) inObj.readObject();
             inObj.close();
             return out;
         } catch(IOException error) {

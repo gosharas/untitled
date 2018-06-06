@@ -16,12 +16,12 @@ public class TestSeeker {
 
         Seeker test = new Seeker("name", SeekerType.Teacher, LocalDate.of(2000, 5, 5), LocalDate.of(2000, 5, 10), +3 * 60 * 60, "Москва, проспект Вернадского, 78, РТУ МИРЭА");
 
-        assertEquals("name", test.NameOfSeeker);
+        assertEquals("name", test.nameOfSeeker);
         assertEquals(SeekerType.Teacher, test.seekerType);
         assertEquals(LocalDate.of(2000, 5, 5), test.dateStart);
         assertEquals(LocalDate.of(2000, 5, 10), test.dateFinish);
         assertEquals(10800, test.timezone);
-        assertEquals("Москва, проспект Вернадского, 78, РТУ МИРЭА", test.DefaultAddress);
+        assertEquals("Москва, проспект Вернадского, 78, РТУ МИРЭА", test.defaultAddress);
 
         PackageToClient cl = new PackageToClient(new byte[]{0, 0}, 0, "Всё ок");
         assertArrayEquals(new byte[]{0, 0}, cl.CalFile);

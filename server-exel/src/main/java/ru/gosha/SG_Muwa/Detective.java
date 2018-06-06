@@ -136,7 +136,7 @@ public class Detective {
      * @return Адрес местоположения пары.
      */
     private static String GetAddressOfDay(Point titleOfDay, int CountCouples, String DefaultAddress, List<Point> IgnoresCoupleTitle, ExcelFileInterface file) throws IOException {
-        String output = DefaultAddress; // Если никакой не найдётся, будет DefaultAddress.
+        String output = DefaultAddress; // Если никакой не найдётся, будет defaultAddress.
         for(int y = titleOfDay.y; y < titleOfDay.y + CountCouples*2; y++)
             if(file.getCellData(titleOfDay.x, y).trim().equals("Занятия по адресу:")) {
                 output = file.getCellData(titleOfDay.x, y + 1);
