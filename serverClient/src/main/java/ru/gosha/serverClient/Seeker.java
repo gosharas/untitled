@@ -6,9 +6,10 @@
 
 package ru.gosha.serverClient;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Seeker {
+public class Seeker implements Serializable {
     /**
      * Имя искателя.
      */
