@@ -33,4 +33,43 @@ public class PackageToClient implements Serializable {
         this.Count = Count;
         this.Messages = Messages;
     }
+
+    /**
+     * Преобразует текущий класс в поток байтов.
+     * @return Хранилище данного класса в виде байтов.
+     */
+    public byte[] toByteArray() {
+        try {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            ObjectOutputStream outObj = new ObjectOutputStream(out);
+
+
+            // conversion from "yourObject" to byte[]
+            outObj.writeObject(this);
+            outObj.flush();
+            outObj.close();
+            return out.toByteArray();
+        }
+        catch (IOException error){
+            return new byte[]{};
+        }
+    }
+
+    /**
+     * Преобразует входящий массив байтов в текущее хранилище.
+     * @param input Массив байтов, который необходимо перевести в текущий класс.
+     * @return Представление хранилища в классе PackageToClient. Если ошибка, то null.
+     * @throws ClassNotFoundException Данные не истинные.
+     */
+    public static PackageToClient fromByteArray(byte[] input) throws ClassNotFoundException {
+        try {
+            ByteArrayInputStream in = new ByteArrayInputStream(input);
+            ObjectInputStream inObj = new ObjectInputStream(in);
+            PackageToClient out = (PackageToClient) inObj.readObject();
+            inObj.close();
+            return out;
+        } catch(IOException error) {
+            return null;
+        }
+    }
 }
